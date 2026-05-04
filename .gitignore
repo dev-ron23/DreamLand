@@ -1,0 +1,18 @@
+# Environment variables — NEVER commit these
+.env
+
+# Build output
+dist/
+
+# Dependencies
+node_modules/
+
+# Coverage
+coverage/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Kiro spec configs (optional, remove if you want to track them)
+.kiro/

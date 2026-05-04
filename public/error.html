@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Something went wrong while joining DreamLand." />
+  <title>DreamLand — Something went wrong</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="page">
+    <section class="feedback feedback--error" aria-labelledby="error-heading">
+      <div class="feedback__icon" aria-hidden="true">✕</div>
+      <h1 id="error-heading" class="feedback__title">Something went wrong</h1>
+      <p id="error-message" class="feedback__body">An unexpected error occurred. Please try again.</p>
+      <a href="/" class="btn btn--primary">Try again</a>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var messages = {
+        invalid_state: 'Your session was invalid or the request could not be verified. This can happen if you navigated back or opened the link in a new tab. Please try again.',
+        state_expired: 'Your authorization session expired. Discord authorization must be completed within 10 minutes. Please try again.',
+        access_denied: 'You declined the Discord authorization request. To join DreamLand, you need to grant the required permissions.',
+        token_exchange_failed: 'We were unable to complete the authorization with Discord. This is usually a temporary issue — please try again in a moment.',
+        user_fetch_failed: 'We could not retrieve your Discord profile. Please try again. If the problem persists, check that your Discord account is in good standing.',
+        guild_join_failed: 'We were unable to add you to the DreamLand server. This may be a temporary issue. Please try again, or contact a server admin if the problem continues.'
+      };
+
+      var params = new URLSearchParams(window.location.search);
+      var reason = params.get('reason');
+      var message = (reason && messages[reason]) || 'An unexpected error occurred. Please try again.';
+
+      document.getElementById('error-message').textContent = message;
+    })();
+  </script>
+</body>
+</html>

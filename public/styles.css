@@ -1,0 +1,240 @@
+/* ============================================================
+   DreamLand — Shared Stylesheet
+   ============================================================ */
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-discord:      #5865F2;
+  --color-discord-dark: #4752C4;
+  --color-success:      #2D7D46;
+  --color-success-bg:   #F0FFF4;
+  --color-success-border: #68D391;
+  --color-error:        #C53030;
+  --color-error-bg:     #FFF5F5;
+  --color-error-border: #FC8181;
+  --color-text:         #1A202C;
+  --color-text-muted:   #4A5568;
+  --color-bg:           #F7F8FC;
+  --color-surface:      #FFFFFF;
+  --color-border:       #E2E8F0;
+
+  --radius-sm:  6px;
+  --radius-md:  12px;
+  --radius-lg:  20px;
+
+  --shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md:  0 4px 16px rgba(0, 0, 0, 0.10), 0 2px 6px rgba(0, 0, 0, 0.06);
+
+  --font-sans:  system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --transition: 150ms ease;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ---------- Layout ---------- */
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+/* ---------- Hero Section ---------- */
+.hero {
+  width: 100%;
+  max-width: 560px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 3rem 2.5rem;
+  text-align: center;
+}
+
+.hero__title {
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-bottom: 0.75rem;
+}
+
+.hero__subtitle {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  max-width: 38ch;
+  margin: 0 auto 2rem;
+}
+
+/* ---------- Feedback Sections (success / error) ---------- */
+.feedback {
+  width: 100%;
+  max-width: 520px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 3rem 2.5rem;
+  text-align: center;
+}
+
+.feedback--success {
+  border-top: 4px solid var(--color-success);
+}
+
+.feedback--error {
+  border-top: 4px solid var(--color-error);
+}
+
+.feedback__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+
+.feedback--success .feedback__icon {
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+  border: 2px solid var(--color-success-border);
+}
+
+.feedback--error .feedback__icon {
+  background-color: var(--color-error-bg);
+  color: var(--color-error);
+  border: 2px solid var(--color-error-border);
+}
+
+.feedback__title {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+
+.feedback--success .feedback__title {
+  color: var(--color-success);
+}
+
+.feedback--error .feedback__title {
+  color: var(--color-error);
+}
+
+.feedback__body {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  max-width: 40ch;
+  margin: 0 auto 2rem;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition:
+    background-color var(--transition),
+    box-shadow var(--transition),
+    transform var(--transition);
+  white-space: nowrap;
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--color-discord);
+  outline-offset: 3px;
+}
+
+/* Primary — Discord brand colour */
+.btn--primary {
+  background-color: var(--color-discord);
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(88, 101, 242, 0.35);
+}
+
+.btn--primary:hover,
+.btn--primary:focus-visible {
+  background-color: var(--color-discord-dark);
+  box-shadow: 0 4px 14px rgba(88, 101, 242, 0.45);
+  transform: translateY(-1px);
+}
+
+.btn--primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(88, 101, 242, 0.30);
+}
+
+/* Secondary — outlined */
+.btn--secondary {
+  background-color: transparent;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+}
+
+.btn--secondary:hover,
+.btn--secondary:focus-visible {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border-color: #CBD5E0;
+}
+
+/* Button icon */
+.btn__icon {
+  flex-shrink: 0;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 480px) {
+  .hero,
+  .feedback {
+    padding: 2rem 1.5rem;
+    border-radius: var(--radius-md);
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+/* ---------- Reduced Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+
+  .btn--primary:hover,
+  .btn--primary:focus-visible {
+    transform: none;
+  }
+}

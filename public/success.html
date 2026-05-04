@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="You have successfully joined DreamLand on Discord." />
+  <title>DreamLand — Welcome!</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="page">
+    <section class="feedback feedback--success" aria-labelledby="feedback-heading">
+      <div class="feedback__icon" aria-hidden="true">✓</div>
+
+      <!-- Shown when user is newly added -->
+      <div id="msg-joined">
+        <h1 id="feedback-heading" class="feedback__title">You're in!</h1>
+        <p class="feedback__body">Welcome to DreamLand. You've been successfully added to the Discord server. Open Discord to start chatting.</p>
+      </div>
+
+      <!-- Shown when user was already a member -->
+      <div id="msg-already-member" hidden>
+        <h1 id="feedback-heading-alt" class="feedback__title">Already a member</h1>
+        <p class="feedback__body">Looks like you're already part of DreamLand. Head over to Discord and jump right in.</p>
+      </div>
+
+      <a href="/" class="btn btn--secondary">Back to home</a>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('already_member') === 'true') {
+        document.getElementById('msg-joined').hidden = true;
+        var alt = document.getElementById('msg-already-member');
+        alt.hidden = false;
+        // Update the accessible heading reference
+        var section = alt.closest('section');
+        if (section) section.setAttribute('aria-labelledby', 'feedback-heading-alt');
+      }
+    })();
+  </script>
+</body>
+</html>
