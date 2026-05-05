@@ -1,30 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>𝕯𝖗𝖊𝖆𝖒𝕷𝖆𝖓𝖉 — Enter The Dream</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&family=Cinzel:wght@400;600;700;900&display=swap" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&family=Cinzel:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --p:#8B5CF6;--pl:#A78BFA;--pd:#6D28D9;--pdd:#4C1D95;
-  --b:#3B82F6;--bd:#1E40AF;
-  --navy:#050510;--navy2:#080820;
-}
-html{scroll-behavior:smooth}
+:root{--p:#8B5CF6;--pl:#A78BFA;--pd:#6D28D9;--pdd:#4C1D95;--b:#3B82F6;--navy:#050510;--navy2:#080820}
 body{font-family:'Inter',sans-serif;background:var(--navy);color:#fff;min-height:100vh;overflow-x:hidden}
 
-/* ── BACKGROUND ── */
-.bg{position:fixed;inset:0;z-index:0;
-  background:
-    radial-gradient(ellipse 110% 70% at 50% -20%,rgba(139,92,246,.45) 0%,transparent 55%),
-    radial-gradient(ellipse 70% 60% at 90% 90%,rgba(59,130,246,.2) 0%,transparent 50%),
-    radial-gradient(ellipse 60% 50% at 0% 80%,rgba(109,40,217,.28) 0%,transparent 50%),
-    linear-gradient(160deg,#050510 0%,#080820 40%,#060615 100%)}
-
+.bg{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse 110% 70% at 50% -20%,rgba(139,92,246,.45) 0%,transparent 55%),radial-gradient(ellipse 70% 60% at 90% 90%,rgba(59,130,246,.2) 0%,transparent 50%),radial-gradient(ellipse 60% 50% at 0% 80%,rgba(109,40,217,.28) 0%,transparent 50%),linear-gradient(160deg,#050510 0%,#080820 40%,#060615 100%)}
 .aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .ab{position:absolute;width:220%;height:320px;filter:blur(70px);border-radius:50%}
 .ab1{top:8%;left:-60%;opacity:.14;background:linear-gradient(90deg,transparent,#7C3AED,#3B82F6,transparent);animation:am1 18s ease-in-out infinite}
@@ -33,7 +21,6 @@ body{font-family:'Inter',sans-serif;background:var(--navy);color:#fff;min-height
 @keyframes am1{0%,100%{transform:translateX(0) skewY(-2deg)}50%{transform:translateX(18%) skewY(2deg)}}
 @keyframes am2{0%,100%{transform:translateX(0) skewY(1deg)}50%{transform:translateX(-12%) skewY(-1deg)}}
 @keyframes am3{0%,100%{transform:translateX(0) skewY(-1deg)}50%{transform:translateX(14%) skewY(2deg)}}
-
 .orb{position:fixed;border-radius:50%;filter:blur(110px);pointer-events:none;z-index:0}
 .o1{width:750px;height:750px;top:-250px;left:-180px;background:radial-gradient(circle,rgba(124,58,237,.2) 0%,transparent 70%);animation:of1 14s ease-in-out infinite}
 .o2{width:650px;height:650px;bottom:-220px;right:-180px;background:radial-gradient(circle,rgba(59,130,246,.15) 0%,transparent 70%);animation:of2 18s ease-in-out infinite}
@@ -41,198 +28,121 @@ body{font-family:'Inter',sans-serif;background:var(--navy);color:#fff;min-height
 @keyframes of1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(55px,45px) scale(1.12)}}
 @keyframes of2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-45px,-55px) scale(1.18)}}
 @keyframes of3{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.35)}}
-
-.grid{position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:linear-gradient(rgba(139,92,246,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,.05) 1px,transparent 1px);
-  background-size:70px 70px}
-.scanlines{position:fixed;inset:0;z-index:0;pointer-events:none;
-  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.025) 2px,rgba(0,0,0,.025) 4px)}
-
+.grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(139,92,246,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,.05) 1px,transparent 1px);background-size:70px 70px}
+.scanlines{position:fixed;inset:0;z-index:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.025) 2px,rgba(0,0,0,.025) 4px)}
 .stars-wrap{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .star{position:absolute;height:1.5px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.9),transparent);border-radius:50%;animation:shoot linear infinite}
 @keyframes shoot{0%{transform:translateX(-300px) translateY(0) rotate(-25deg);opacity:0}5%{opacity:1}100%{transform:translateX(1600px) translateY(500px) rotate(-25deg);opacity:0}}
-
 .particles{position:fixed;inset:0;z-index:0;pointer-events:none}
 .particle{position:absolute;border-radius:50%;animation:pf linear infinite}
 @keyframes pf{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-100px) scale(1);opacity:0}}
-
-/* ── FLOATING BADGES ── */
-.fbadge{position:fixed;z-index:1;
-  background:rgba(255,255,255,.035);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:.55rem 1rem;
-  font-size:.72rem;color:rgba(255,255,255,.45);pointer-events:none;letter-spacing:.02em}
+.fbadge{position:fixed;z-index:1;background:rgba(255,255,255,.035);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:.55rem 1rem;font-size:.72rem;color:rgba(255,255,255,.45);pointer-events:none;letter-spacing:.02em}
 .fb1{top:12%;left:3%;animation:fbob 7s ease-in-out infinite}
 .fb2{top:22%;right:3%;animation:fbob 9s ease-in-out infinite .5s}
 .fb3{bottom:18%;left:5%;animation:fbob 6s ease-in-out infinite 1s}
 @keyframes fbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 
-/* ── PAGE ── */
 .page{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1rem}
-
-/* ── CARD WRAP ── */
 .card-wrap{perspective:1400px;width:100%;max-width:700px}
 .card-inner{transform-style:preserve-3d;transition:transform .1s ease}
 
-/* ── BANNER ── */
-.banner{
-  width:100%;height:220px;
-  border-radius:24px 24px 0 0;
-  overflow:hidden;position:relative;flex-shrink:0}
+/* ONE UNIFIED CARD */
+.card{
+  background:rgba(255,255,255,.04);
+  backdrop-filter:blur(50px) saturate(200%);-webkit-backdrop-filter:blur(50px) saturate(200%);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:24px;
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 0 0 1px rgba(139,92,246,.12),0 40px 100px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.07)}
+.card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(139,92,246,.07) 0%,transparent 45%,rgba(59,130,246,.05) 100%);pointer-events:none;z-index:0}
+.card::after{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.025),transparent);animation:shimmer 8s ease-in-out infinite;pointer-events:none;z-index:0}
+@keyframes shimmer{0%{left:-100%}100%{left:200%}}
+
+/* BANNER inside card */
+.banner{width:100%;height:210px;position:relative;overflow:hidden;flex-shrink:0}
 .banner-img{width:100%;height:100%;object-fit:cover;display:block}
-.banner-fade{position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(5,5,16,.0) 0%,rgba(5,5,16,.15) 70%,rgba(5,5,16,.55) 100%)}
+.banner-fade{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(5,5,16,.85) 100%)}
 
-/* ── PROFILE SEAM — sits between banner and card, z-index above both ── */
-.profile-seam{
-  position:relative;z-index:10;
+/* PROFILE ROW — inside card, overlapping banner bottom */
+.profile-row{
   display:flex;align-items:center;gap:1.25rem;
-  padding:0 2.5rem;
-  margin-top:-50px;   /* pulls up into banner bottom */
-  margin-bottom:0;
-  pointer-events:none}
-.profile-seam>*{pointer-events:auto}
-
-/* dummy — kept for compat */
-.banner-name-block{display:none}
+  padding:0 2.25rem;
+  margin-top:-48px;   /* half the PFP height — pulls up over banner */
+  position:relative;z-index:2;
+  margin-bottom:1.25rem}
 
 .pfp-wrap{position:relative;flex-shrink:0}
-.pfp{
-  width:100px;height:100px;border-radius:50%;
-  border:4px solid rgba(5,5,16,.9);
-  object-fit:cover;display:block;
-  box-shadow:0 0 0 3px var(--p),0 0 40px rgba(139,92,246,.7),0 0 80px rgba(139,92,246,.35);
-  animation:pfpGlow 3s ease-in-out infinite}
-@keyframes pfpGlow{
-  0%,100%{box-shadow:0 0 0 3px var(--p),0 0 40px rgba(139,92,246,.7),0 0 80px rgba(139,92,246,.35)}
-  50%{box-shadow:0 0 0 3px var(--pl),0 0 65px rgba(167,139,250,1),0 0 130px rgba(139,92,246,.6)}}
-.online{position:absolute;bottom:6px;right:6px;width:20px;height:20px;border-radius:50%;
-  background:#23A55A;border:3px solid rgba(5,5,16,.9);box-shadow:0 0 14px rgba(35,165,90,.8)}
+.pfp{width:96px;height:96px;border-radius:50%;border:4px solid rgba(8,8,32,.95);object-fit:cover;display:block;box-shadow:0 0 0 3px var(--p),0 0 40px rgba(139,92,246,.7),0 0 80px rgba(139,92,246,.35);animation:pfpGlow 3s ease-in-out infinite}
+@keyframes pfpGlow{0%,100%{box-shadow:0 0 0 3px var(--p),0 0 40px rgba(139,92,246,.7),0 0 80px rgba(139,92,246,.35)}50%{box-shadow:0 0 0 3px var(--pl),0 0 65px rgba(167,139,250,1),0 0 130px rgba(139,92,246,.6)}}
+.online{position:absolute;bottom:6px;right:6px;width:18px;height:18px;border-radius:50%;background:#23A55A;border:3px solid rgba(8,8,32,.95);box-shadow:0 0 12px rgba(35,165,90,.8)}
 
 /* HOVER CARD */
-.hcard{position:absolute;bottom:calc(100% + 14px);left:50%;transform:translateX(-50%) scale(.9) translateY(8px);width:230px;
-  background:rgba(8,8,32,.97);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);
-  border:1px solid rgba(139,92,246,.25);border-radius:18px;padding:1.1rem;
-  pointer-events:none;opacity:0;transition:all .25s cubic-bezier(.34,1.56,.64,1);z-index:100;
-  box-shadow:0 20px 50px rgba(0,0,0,.7)}
+.hcard{position:absolute;bottom:calc(100% + 14px);left:50%;transform:translateX(-50%) scale(.9) translateY(8px);width:220px;background:rgba(8,8,32,.97);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);border:1px solid rgba(139,92,246,.25);border-radius:18px;padding:1rem;pointer-events:none;opacity:0;transition:all .25s cubic-bezier(.34,1.56,.64,1);z-index:100;box-shadow:0 20px 50px rgba(0,0,0,.7)}
 .pfp-wrap:hover .hcard{opacity:1;transform:translateX(-50%) scale(1) translateY(0)}
-.hcard-pfp{width:44px;height:44px;border-radius:50%;border:2px solid var(--p);margin-bottom:.6rem;object-fit:cover}
-.hcard-name{font-weight:700;font-size:.88rem;margin-bottom:.15rem}
-.hcard-sub{font-size:.72rem;color:rgba(255,255,255,.4)}
-.hcard-badge{display:inline-flex;align-items:center;gap:.3rem;margin-top:.6rem;
-  background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.3);
-  border-radius:8px;padding:.2rem .55rem;font-size:.65rem;color:var(--pl)}
+.hcard-pfp{width:40px;height:40px;border-radius:50%;border:2px solid var(--p);margin-bottom:.5rem;object-fit:cover}
+.hcard-name{font-weight:700;font-size:.85rem;margin-bottom:.1rem}
+.hcard-sub{font-size:.7rem;color:rgba(255,255,255,.4)}
+.hcard-badge{display:inline-flex;align-items:center;gap:.3rem;margin-top:.5rem;background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.3);border-radius:8px;padding:.2rem .5rem;font-size:.62rem;color:var(--pl)}
 
-/* ── TITLE BLOCK ── */
-.title-block{display:flex;flex-direction:column;gap:.4rem;padding-bottom:.25rem}
-
-/* Main title with new text style */
+/* TITLE — single line with suffix inline */
+.title-line{
+  display:flex;align-items:baseline;gap:.5rem;
+  flex-wrap:nowrap;
+  margin-bottom:.45rem}
 .title{
   font-family:'Cinzel',serif;
-  font-size:clamp(1.8rem,4.5vw,2.8rem);
+  font-size:clamp(1.6rem,4vw,2.5rem);
   font-weight:900;
   letter-spacing:.02em;
-  line-height:1.1;
-  background:linear-gradient(90deg,
-    #fff 0%,
-    #E9D5FF 15%,
-    #C4B5FD 30%,
-    #8B5CF6 45%,
-    #3B82F6 60%,
-    #A78BFA 75%,
-    #E9D5FF 88%,
-    #fff 100%);
+  line-height:1;
+  white-space:nowrap;
+  background:linear-gradient(90deg,#fff 0%,#E9D5FF 15%,#C4B5FD 30%,#8B5CF6 45%,#3B82F6 60%,#A78BFA 75%,#E9D5FF 88%,#fff 100%);
   background-size:300% auto;
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   animation:titleFlow 5s linear infinite;
-  text-shadow:none;
-  filter:drop-shadow(0 0 20px rgba(139,92,246,.6));
-}
+  filter:drop-shadow(0 0 18px rgba(139,92,246,.55))}
 @keyframes titleFlow{0%{background-position:0% center}100%{background-position:300% center}}
-
-/* Decorative suffix */
 .title-suffix{
-  font-size:clamp(.85rem,2vw,1.1rem);
+  font-size:clamp(.8rem,1.8vw,1rem);
+  white-space:nowrap;
   background:linear-gradient(90deg,#A78BFA,#60A5FA,#A78BFA);
   background-size:200% auto;
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   animation:titleFlow 4s linear infinite;
-  letter-spacing:.05em;
-  opacity:.9}
+  letter-spacing:.04em;
+  line-height:1}
+.stag{display:inline-flex;align-items:center;gap:.4rem;background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.3);backdrop-filter:blur(10px);border-radius:20px;padding:.22rem .8rem;font-size:.7rem;color:var(--pl);font-weight:500;width:fit-content}
 
-.stag{display:inline-flex;align-items:center;gap:.4rem;
-  background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.3);
-  backdrop-filter:blur(10px);
-  border-radius:20px;padding:.22rem .8rem;font-size:.72rem;color:var(--pl);font-weight:500;
-  width:fit-content}
-
-/* ── GLASS CARD BODY ── */
-.card{
-  background:rgba(255,255,255,.04);
-  backdrop-filter:blur(50px) saturate(200%);-webkit-backdrop-filter:blur(50px) saturate(200%);
-  border:1px solid rgba(255,255,255,.09);border-top:none;
-  border-radius:0 0 28px 28px;
-  padding:0 2.5rem 2.5rem;
-  position:relative;overflow:hidden;
-  box-shadow:0 0 0 1px rgba(139,92,246,.12),0 40px 100px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.07)}
-.card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(139,92,246,.07) 0%,transparent 45%,rgba(59,130,246,.05) 100%);pointer-events:none}
-.card::after{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.025),transparent);animation:shimmer 8s ease-in-out infinite;pointer-events:none}
-@keyframes shimmer{0%{left:-100%}100%{left:200%}}
-
-/* ── DIVIDER ── */
-.div{height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,.5),rgba(59,130,246,.5),transparent);margin:1.25rem 0 1.5rem;position:relative}
-.div::after{content:'✦';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  background:var(--navy2);padding:0 .5rem;font-size:.6rem;color:var(--pl)}
-
-/* ── DESC ── */
+/* CARD CONTENT */
+.card-body{padding:0 2.25rem 2.25rem;position:relative;z-index:1}
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,.5),rgba(59,130,246,.5),transparent);margin:0 0 1.5rem;position:relative}
+.divider::after{content:'✦';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--navy2);padding:0 .5rem;font-size:.6rem;color:var(--pl)}
 .desc{font-size:.93rem;color:rgba(255,255,255,.6);line-height:1.75;margin-bottom:1.75rem}
-
-/* ── STATS ── */
 .stats{display:flex;gap:.75rem;margin-bottom:2rem;flex-wrap:wrap}
-.stat{flex:1;min-width:90px;
-  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);
-  border-radius:16px;padding:1rem .75rem;text-align:center;
-  transition:all .3s ease;cursor:default;position:relative;overflow:hidden}
+.stat{flex:1;min-width:90px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:1rem .75rem;text-align:center;transition:all .3s ease;cursor:default;position:relative;overflow:hidden}
 .stat::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(139,92,246,.1),transparent);opacity:0;transition:opacity .3s}
 .stat:hover{transform:translateY(-5px) scale(1.02);border-color:rgba(139,92,246,.35);box-shadow:0 10px 30px rgba(139,92,246,.2)}
 .stat:hover::before{opacity:1}
 .snum{font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--pl),var(--b));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .slbl{font-size:.65rem;color:rgba(255,255,255,.35);margin-top:.2rem;text-transform:uppercase;letter-spacing:.08em}
-
-/* ── BUTTON ── */
-.btn{display:flex;align-items:center;justify-content:center;gap:.75rem;width:100%;
-  padding:1.15rem 2rem;border-radius:18px;
-  font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:700;
-  text-decoration:none;color:#fff;
-  background:linear-gradient(135deg,var(--pdd) 0%,var(--pd) 25%,var(--p) 60%,var(--b) 100%);
-  background-size:200% auto;
-  border:1px solid rgba(255,255,255,.15);
-  box-shadow:0 8px 32px rgba(139,92,246,.45),0 0 0 1px rgba(139,92,246,.2),inset 0 1px 0 rgba(255,255,255,.15);
-  transition:all .3s ease;position:relative;overflow:hidden;
-  animation:btnPulse 3s ease-in-out infinite}
-@keyframes btnPulse{
-  0%,100%{box-shadow:0 8px 32px rgba(139,92,246,.45),0 0 0 1px rgba(139,92,246,.2),inset 0 1px 0 rgba(255,255,255,.15)}
-  50%{box-shadow:0 8px 55px rgba(139,92,246,.8),0 0 0 1px rgba(167,139,250,.5),inset 0 1px 0 rgba(255,255,255,.2)}}
+.btn{display:flex;align-items:center;justify-content:center;gap:.75rem;width:100%;padding:1.15rem 2rem;border-radius:18px;font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:700;text-decoration:none;color:#fff;background:linear-gradient(135deg,var(--pdd) 0%,var(--pd) 25%,var(--p) 60%,var(--b) 100%);background-size:200% auto;border:1px solid rgba(255,255,255,.15);box-shadow:0 8px 32px rgba(139,92,246,.45),0 0 0 1px rgba(139,92,246,.2),inset 0 1px 0 rgba(255,255,255,.15);transition:all .3s ease;position:relative;overflow:hidden;animation:btnPulse 3s ease-in-out infinite}
+@keyframes btnPulse{0%,100%{box-shadow:0 8px 32px rgba(139,92,246,.45),0 0 0 1px rgba(139,92,246,.2),inset 0 1px 0 rgba(255,255,255,.15)}50%{box-shadow:0 8px 55px rgba(139,92,246,.8),0 0 0 1px rgba(167,139,250,.5),inset 0 1px 0 rgba(255,255,255,.2)}}
 .btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.12),transparent);opacity:0;transition:opacity .3s}
 .btn:hover{background-position:right center;transform:translateY(-3px) scale(1.01)}
 .btn:hover::before{opacity:1}
 .btn:active{transform:translateY(0) scale(.99)}
-
-/* ── CREDIT ── */
 .credit{text-align:center;margin-top:1.75rem;font-size:.78rem;color:rgba(255,255,255,.25)}
-.cname{font-weight:600;
-  background:linear-gradient(90deg,#8B5CF6,#60A5FA,#C4B5FD,#3B82F6,#8B5CF6);
-  background-size:300% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  animation:titleFlow 4s linear infinite}
+.cname{font-weight:600;background:linear-gradient(90deg,#8B5CF6,#60A5FA,#C4B5FD,#3B82F6,#8B5CF6);background-size:300% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:titleFlow 4s linear infinite}
 
 @media(max-width:600px){
-  .card{padding:0 1.25rem 2rem}
-  .banner{height:160px}
-  .profile-seam{padding:0 1.25rem;margin-top:-40px;gap:.75rem}
-  .pfp{width:75px;height:75px}
+  .banner{height:150px}
+  .profile-row{padding:0 1.25rem;margin-top:-38px;gap:.75rem}
+  .pfp{width:76px;height:76px}
+  .card-body{padding:0 1.25rem 1.75rem}
   .stats{gap:.5rem}
   .fbadge{display:none}
+  .title-line{flex-wrap:wrap}
 }
 </style>
 </head>
@@ -244,7 +154,6 @@ body{font-family:'Inter',sans-serif;background:var(--navy);color:#fff;min-height
 <div class="scanlines"></div>
 <div class="stars-wrap" id="starsWrap"></div>
 <div class="particles" id="particles"></div>
-
 <div class="fbadge fb1">✦ Discord Community</div>
 <div class="fbadge fb2">⚡ Active Server</div>
 <div class="fbadge fb3">🌙 DreamLand</div>
@@ -252,75 +161,69 @@ body{font-family:'Inter',sans-serif;background:var(--navy);color:#fff;min-height
 <main class="page">
   <div class="card-wrap" id="cardWrap">
     <div class="card-inner" id="cardInner">
-
-      <!-- BANNER — full image, light fade only at very bottom edge -->
-      <div class="banner">
-        <img class="banner-img" src="https://i.postimg.cc/DzW1cbK9/Dream-Land-banner.png" alt="DreamLand Banner"
-          onerror="this.style.cssText='width:100%;height:100%;display:block;background:linear-gradient(135deg,#4C1D95 0%,#1E40AF 100%)'"/>
-        <div class="banner-fade"></div>
-      </div>
-
-      <!-- PROFILE SEAM — straddles banner bottom / card top -->
-      <div class="profile-seam">
-        <div class="pfp-wrap">
-          <img class="pfp" src="https://i.postimg.cc/m2w3ZswS/Dream-Land-Pfp.png" alt="DreamLand"
-            onerror="this.style.cssText='width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,#6D28D9,#1E40AF);display:block'"/>
-          <div class="online"></div>
-          <div class="hcard">
-            <img src="https://i.postimg.cc/m2w3ZswS/Dream-Land-Pfp.png" alt="" class="hcard-pfp"/>
-            <div class="hcard-name">𝕯𝖗𝖊𝖆𝖒𝕷𝖆𝖓𝖉</div>
-            <div class="hcard-sub">Official Discord Server</div>
-            <div class="hcard-badge">⚡ Verified Community</div>
-          </div>
-        </div>
-        <div class="title-block">
-          <h1 class="title">𝕯𝖗𝖊𝖆𝖒𝕷𝖆𝖓𝖉</h1>
-          <div class="title-suffix">࣪ ࣪ ִֶָ☾.࣪࿐</div>
-          <div class="stag">
-            <svg width="8" height="8" viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>
-            Official Discord Server
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD BODY -->
       <div class="card">
-        <div style="height:1.25rem"></div>
-        <div class="div"></div>
-        <p class="desc">Step into a world where dreams become reality. Join thousands of members in our premium Discord community — exclusive events, unique roles, and an unforgettable experience await you.</p>
-        <div class="stats">
-          <div class="stat"><div class="snum">∞</div><div class="slbl">Members</div></div>
-          <div class="stat"><div class="snum">24/7</div><div class="slbl">Active</div></div>
-          <div class="stat"><div class="snum">100%</div><div class="slbl">Free</div></div>
-        </div>
-        <a href="/auth/discord" role="button" class="btn" aria-label="Join DreamLand Discord server">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.033.055a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
-          Enter 𝕯𝖗𝖊𝖆𝖒𝕷𝖆𝖓𝖉
-        </a>
-        <div class="credit">2Outh System made <span class="cname">𓆩𝔇𝔯𝖊𝔞𝖒᷃𝔅𝔬ﾒﾒ̽̽𓆪 ࣪ ࣪ ִֶָ☾.࣪࿐</span></div>
-      </div>
 
+        <!-- BANNER at top of card -->
+        <div class="banner">
+          <img class="banner-img" src="https://i.postimg.cc/DzW1cbK9/Dream-Land-banner.png" alt="DreamLand Banner"
+            onerror="this.style.cssText='width:100%;height:100%;display:block;background:linear-gradient(135deg,#4C1D95,#1E40AF)'">
+          <div class="banner-fade"></div>
+        </div>
+
+        <!-- PROFILE ROW — overlaps banner bottom, inside same card -->
+        <div class="profile-row">
+          <div class="pfp-wrap">
+            <img class="pfp" src="https://i.postimg.cc/m2w3ZswS/Dream-Land-Pfp.png" alt="DreamLand"
+              onerror="this.style.cssText='width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,#6D28D9,#1E40AF);display:block'">
+            <div class="online"></div>
+            <div class="hcard">
+              <img src="https://i.postimg.cc/m2w3ZswS/Dream-Land-Pfp.png" alt="" class="hcard-pfp">
+              <div class="hcard-name">𝕯𝖗𝖊𝖆𝖒𝕷𝖆𝖓𝖉</div>
+              <div class="hcard-sub">Official Discord Server</div>
+              <div class="hcard-badge">⚡ Verified Community</div>
+            </div>
+          </div>
+          <div>
+            <!-- SINGLE LINE: name + symbol together -->
+            <div class="title-line">
+              <h1 class="title">𝕯𝖗𝖊𝖆𝖒𝕷𝖆𝖓𝖉</h1>
+              <span class="title-suffix">࣪ ࣪ ִֶָ☾.࣪࿐</span>
+            </div>
+            <div class="stag">
+              <svg width="8" height="8" viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>
+              Official Discord Server
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD BODY -->
+        <div class="card-body">
+          <div class="divider"></div>
+          <p class="desc">Step into a world where dreams become reality. Join thousands of members in our premium Discord community — exclusive events, unique roles, and an unforgettable experience await you.</p>
+          <div class="stats">
+            <div class="stat"><div class="snum">∞</div><div class="slbl">Members</div></div>
+            <div class="stat"><div class="snum">24/7</div><div class="slbl">Active</div></div>
+            <div class="stat"><div class="snum">100%</div><div class="slbl">Free</div></div>
+          </div>
+          <a href="/auth/discord" role="button" class="btn" aria-label="Join DreamLand Discord server">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.033.055a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+            Enter 𝕯𝖗𝖊𝖆𝖒𝕷𝖆𝖓𝖉
+          </a>
+          <div class="credit">2Outh System made <span class="cname">𓆩𝔇𝔯𝖊𝔞𝖒᷃𝔅𝔬ﾒﾒ̽̽𓆪 ࣪ ࣪ ִֶָ☾.࣪࿐</span></div>
+        </div>
+
+      </div>
     </div>
   </div>
 </main>
 
 <script>
-// Particles
 const pc=document.getElementById('particles');
 for(let i=0;i<30;i++){const p=document.createElement('div');p.className='particle';const s=Math.random()*3+1;p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${Math.random()*18+8}s;animation-delay:${Math.random()*12}s;opacity:${Math.random()*.5+.15};background:${Math.random()>.5?'rgba(139,92,246,.8)':'rgba(59,130,246,.8)'};`;pc.appendChild(p)}
-
-// Shooting stars
 const sw=document.getElementById('starsWrap');
 for(let i=0;i<10;i++){const s=document.createElement('div');s.className='star';const w=Math.random()*200+80;s.style.cssText=`width:${w}px;top:${Math.random()*60}%;left:${Math.random()*20}%;animation-duration:${Math.random()*4+3}s;animation-delay:${Math.random()*10}s;opacity:${Math.random()*.6+.3};`;sw.appendChild(s)}
-
-// 3D tilt
 const wrap=document.getElementById('cardWrap'),inner=document.getElementById('cardInner');
-wrap.addEventListener('mousemove',e=>{
-  const r=wrap.getBoundingClientRect();
-  const x=(e.clientX-r.left)/r.width-.5;
-  const y=(e.clientY-r.top)/r.height-.5;
-  inner.style.transform=`rotateY(${x*7}deg) rotateX(${-y*5}deg) translateZ(12px)`;
-});
+wrap.addEventListener('mousemove',e=>{const r=wrap.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5;const y=(e.clientY-r.top)/r.height-.5;inner.style.transform=`rotateY(${x*7}deg) rotateX(${-y*5}deg) translateZ(12px)`;});
 wrap.addEventListener('mouseleave',()=>{inner.style.transition='transform .7s ease';inner.style.transform='rotateY(0) rotateX(0) translateZ(0)';});
 wrap.addEventListener('mouseenter',()=>{inner.style.transition='transform .12s ease';});
 </script>
