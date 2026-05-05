@@ -73,21 +73,27 @@ body{font-family:'Inter',sans-serif;background:var(--navy);color:#fff;min-height
 .card-wrap{perspective:1400px;width:100%;max-width:700px}
 .card-inner{transform-style:preserve-3d;transition:transform .1s ease}
 
-/* ── BANNER (contains name overlay) ── */
+/* ── BANNER ── */
 .banner{
   width:100%;height:220px;
   border-radius:24px 24px 0 0;
   overflow:hidden;position:relative;flex-shrink:0}
 .banner-img{width:100%;height:100%;object-fit:cover;display:block}
 .banner-fade{position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(5,5,16,.1) 0%,rgba(5,5,16,.5) 60%,rgba(5,5,16,.98) 100%)}
+  background:linear-gradient(to bottom,rgba(5,5,16,.0) 0%,rgba(5,5,16,.15) 70%,rgba(5,5,16,.55) 100%)}
 
-/* ── NAME OVERLAY (sits inside banner, bottom-left) ── */
-.banner-name-block{
-  position:absolute;bottom:0;left:0;right:0;
-  padding:1.25rem 2.5rem 1.5rem;
-  display:flex;align-items:flex-end;gap:1.25rem;
-  z-index:3}
+/* ── PROFILE SEAM — sits between banner and card, z-index above both ── */
+.profile-seam{
+  position:relative;z-index:10;
+  display:flex;align-items:center;gap:1.25rem;
+  padding:0 2.5rem;
+  margin-top:-50px;   /* pulls up into banner bottom */
+  margin-bottom:0;
+  pointer-events:none}
+.profile-seam>*{pointer-events:auto}
+
+/* dummy — kept for compat */
+.banner-name-block{display:none}
 
 .pfp-wrap{position:relative;flex-shrink:0}
 .pfp{
@@ -167,7 +173,7 @@ body{font-family:'Inter',sans-serif;background:var(--navy);color:#fff;min-height
   backdrop-filter:blur(50px) saturate(200%);-webkit-backdrop-filter:blur(50px) saturate(200%);
   border:1px solid rgba(255,255,255,.09);border-top:none;
   border-radius:0 0 28px 28px;
-  padding:1.75rem 2.5rem 2.5rem;
+  padding:0 2.5rem 2.5rem;
   position:relative;overflow:hidden;
   box-shadow:0 0 0 1px rgba(139,92,246,.12),0 40px 100px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.07)}
 .card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(139,92,246,.07) 0%,transparent 45%,rgba(59,130,246,.05) 100%);pointer-events:none}
@@ -221,9 +227,9 @@ body{font-family:'Inter',sans-serif;background:var(--navy);color:#fff;min-height
   animation:titleFlow 4s linear infinite}
 
 @media(max-width:600px){
-  .card{padding:1.25rem 1.25rem 2rem}
+  .card{padding:0 1.25rem 2rem}
   .banner{height:160px}
-  .banner-name-block{padding:.75rem 1.25rem 1rem;gap:.75rem}
+  .profile-seam{padding:0 1.25rem;margin-top:-40px;gap:.75rem}
   .pfp{width:75px;height:75px}
   .stats{gap:.5rem}
   .fbadge{display:none}
@@ -247,39 +253,39 @@ body{font-family:'Inter',sans-serif;background:var(--navy);color:#fff;min-height
   <div class="card-wrap" id="cardWrap">
     <div class="card-inner" id="cardInner">
 
-      <!-- BANNER with name overlaid inside -->
+      <!-- BANNER — full image, light fade only at very bottom edge -->
       <div class="banner">
         <img class="banner-img" src="https://i.postimg.cc/DzW1cbK9/Dream-Land-banner.png" alt="DreamLand Banner"
           onerror="this.style.cssText='width:100%;height:100%;display:block;background:linear-gradient(135deg,#4C1D95 0%,#1E40AF 100%)'"/>
         <div class="banner-fade"></div>
+      </div>
 
-        <!-- Name block sits INSIDE the banner, above the fade -->
-        <div class="banner-name-block">
-          <div class="pfp-wrap">
-            <img class="pfp" src="https://i.postimg.cc/m2w3ZswS/Dream-Land-Pfp.png" alt="DreamLand"
-              onerror="this.style.cssText='width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,#6D28D9,#1E40AF);display:block'"/>
-            <div class="online"></div>
-            <div class="hcard">
-              <img src="https://i.postimg.cc/m2w3ZswS/Dream-Land-Pfp.png" alt="" class="hcard-pfp"/>
-              <div class="hcard-name">𝕯𝖗𝖊𝖆𝖒𝕷𝖆𝖓𝖉</div>
-              <div class="hcard-sub">Official Discord Server</div>
-              <div class="hcard-badge">⚡ Verified Community</div>
-            </div>
+      <!-- PROFILE SEAM — straddles banner bottom / card top -->
+      <div class="profile-seam">
+        <div class="pfp-wrap">
+          <img class="pfp" src="https://i.postimg.cc/m2w3ZswS/Dream-Land-Pfp.png" alt="DreamLand"
+            onerror="this.style.cssText='width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,#6D28D9,#1E40AF);display:block'"/>
+          <div class="online"></div>
+          <div class="hcard">
+            <img src="https://i.postimg.cc/m2w3ZswS/Dream-Land-Pfp.png" alt="" class="hcard-pfp"/>
+            <div class="hcard-name">𝕯𝖗𝖊𝖆𝖒𝕷𝖆𝖓𝖉</div>
+            <div class="hcard-sub">Official Discord Server</div>
+            <div class="hcard-badge">⚡ Verified Community</div>
           </div>
-
-          <div class="title-block">
-            <h1 class="title">𝕯𝖗𝖊𝖆𝖒𝕷𝖆𝖓𝖉</h1>
-            <div class="title-suffix">࣪ ࣪ ִֶָ☾.࣪࿐</div>
-            <div class="stag">
-              <svg width="8" height="8" viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>
-              Official Discord Server
-            </div>
+        </div>
+        <div class="title-block">
+          <h1 class="title">𝕯𝖗𝖊𝖆𝖒𝕷𝖆𝖓𝖉</h1>
+          <div class="title-suffix">࣪ ࣪ ִֶָ☾.࣪࿐</div>
+          <div class="stag">
+            <svg width="8" height="8" viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>
+            Official Discord Server
           </div>
         </div>
       </div>
 
       <!-- CARD BODY -->
       <div class="card">
+        <div style="height:1.25rem"></div>
         <div class="div"></div>
         <p class="desc">Step into a world where dreams become reality. Join thousands of members in our premium Discord community — exclusive events, unique roles, and an unforgettable experience await you.</p>
         <div class="stats">
