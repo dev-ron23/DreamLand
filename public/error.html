@@ -1,168 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DreamLand — Error</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --purple: #8B5CF6; --purple-light: #A78BFA; --blue: #3B82F6; --navy: #0A0A1A; --red: #EF4444; }
-    body { font-family: 'Inter', sans-serif; background: var(--navy); color: #fff; min-height: 100vh; overflow-x: hidden; }
-    .bg {
-      position: fixed; inset: 0; z-index: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(239,68,68,0.15) 0%, transparent 60%),
-                  radial-gradient(ellipse 60% 50% at 80% 80%, rgba(139,92,246,0.12) 0%, transparent 55%),
-                  linear-gradient(135deg, #0A0A1A 0%, #0D0D2B 50%, #080818 100%);
-    }
-    .bg-orb { position: fixed; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0; }
-    .bg-orb-1 { width: 500px; height: 500px; top: -150px; left: -100px; background: radial-gradient(circle, rgba(239,68,68,0.1) 0%, transparent 70%); animation: o1 12s ease-in-out infinite; }
-    .bg-orb-2 { width: 400px; height: 400px; bottom: -100px; right: -100px; background: radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%); animation: o2 15s ease-in-out infinite; }
-    @keyframes o1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(30px,20px)} }
-    @keyframes o2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-20px,-30px)} }
-    .grid-overlay { position: fixed; inset: 0; z-index: 0; pointer-events: none; background-image: linear-gradient(rgba(139,92,246,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(139,92,246,0.03) 1px, transparent 1px); background-size: 60px 60px; }
-    .particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-    .particle { position: absolute; border-radius: 50%; animation: pf linear infinite; }
-    @keyframes pf { 0%{transform:translateY(100vh) scale(0);opacity:0} 10%{opacity:1} 90%{opacity:1} 100%{transform:translateY(-100px) scale(1);opacity:0} }
-
-    .page { position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem 1rem; }
-
-    .card-3d-wrap { perspective: 1200px; width: 100%; max-width: 580px; }
-    .card {
-      background: rgba(255,255,255,0.04);
-      backdrop-filter: blur(40px) saturate(180%);
-      -webkit-backdrop-filter: blur(40px) saturate(180%);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 32px; padding: 3rem 2.5rem; text-align: center;
-      position: relative; overflow: hidden;
-      box-shadow: 0 0 0 1px rgba(239,68,68,0.1), 0 32px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.06);
-      animation: cardIn 0.8s cubic-bezier(0.34,1.56,0.64,1) forwards;
-    }
-    @keyframes cardIn { from{transform:scale(0.8) translateY(40px);opacity:0} to{transform:scale(1) translateY(0);opacity:1} }
-    .card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg, rgba(239,68,68,0.04) 0%, transparent 50%, rgba(139,92,246,0.03) 100%); pointer-events:none; }
-    .card::after { content:''; position:absolute; top:0; left:-100%; width:60%; height:100%; background:linear-gradient(90deg, transparent, rgba(255,255,255,0.02), transparent); animation:shimmer 6s ease-in-out infinite; pointer-events:none; }
-    @keyframes shimmer { 0%{left:-100%} 100%{left:200%} }
-
-    .error-icon-wrap {
-      width: 90px; height: 90px; border-radius: 50%;
-      background: linear-gradient(135deg, rgba(239,68,68,0.15), rgba(239,68,68,0.05));
-      border: 2px solid rgba(239,68,68,0.3);
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 1.5rem;
-      animation: iconPop 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.3s both, iconGlow 3s ease-in-out 1s infinite;
-      box-shadow: 0 0 30px rgba(239,68,68,0.2);
-    }
-    @keyframes iconPop { from{transform:scale(0) rotate(-180deg)} to{transform:scale(1) rotate(0deg)} }
-    @keyframes iconGlow { 0%,100%{box-shadow:0 0 30px rgba(239,68,68,0.2)} 50%{box-shadow:0 0 50px rgba(239,68,68,0.4)} }
-    .error-icon { font-size: 2.5rem; }
-
-    .error-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #fff 0%, #FCA5A5 50%, var(--red) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      margin-bottom: 0.75rem;
-      animation: fadeUp 0.6s ease 0.5s both;
-    }
-    @keyframes fadeUp { from{transform:translateY(20px);opacity:0} to{transform:translateY(0);opacity:1} }
-
-    .error-msg {
-      font-size: 0.95rem; color: rgba(255,255,255,0.5); line-height: 1.7;
-      max-width: 38ch; margin: 0 auto 2rem;
-      animation: fadeUp 0.6s ease 0.7s both;
-    }
-
-    .error-code-badge {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2);
-      border-radius: 20px; padding: 0.4rem 1rem;
-      font-size: 0.75rem; color: #FCA5A5; font-weight: 600;
-      margin-bottom: 2rem;
-      animation: fadeUp 0.6s ease 0.9s both;
-    }
-
-    .btn-retry {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      padding: 0.9rem 2rem; border-radius: 14px;
-      font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700;
-      text-decoration: none; color: #fff;
-      background: linear-gradient(135deg, #6D28D9, var(--purple), var(--blue));
-      border: 1px solid rgba(255,255,255,0.15);
-      box-shadow: 0 8px 24px rgba(139,92,246,0.35);
-      transition: all 0.3s ease;
-      animation: fadeUp 0.6s ease 1.1s both;
-    }
-    .btn-retry:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(139,92,246,0.5); }
-
-    .credit { margin-top: 2rem; font-size: 0.78rem; color: rgba(255,255,255,0.2); animation: fadeUp 0.6s ease 1.3s both; }
-    .credit-name {
-      font-weight: 600;
-      background: linear-gradient(90deg, #8B5CF6, #3B82F6, #8B5CF6); background-size: 200% auto;
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      animation: tf 3s linear infinite;
-    }
-    @keyframes tf { 0%{background-position:0% center} 100%{background-position:200% center} }
-
-    @media (max-width: 600px) { .card { padding: 2rem 1.5rem; } }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>DreamLand — Error</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--p:#8B5CF6;--pl:#A78BFA;--pd:#6D28D9;--b:#3B82F6;--r:#EF4444;--navy:#050510}
+body{font-family:'Inter',sans-serif;background:var(--navy);color:#fff;min-height:100vh;overflow-x:hidden}
+.bg{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse 90% 60% at 50% -10%,rgba(239,68,68,.18) 0%,transparent 55%),radial-gradient(ellipse 60% 50% at 85% 85%,rgba(139,92,246,.12) 0%,transparent 50%),linear-gradient(160deg,#050510 0%,#080820 50%,#060615 100%)}
+.aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.ab{position:absolute;width:200%;height:250px;opacity:.08;filter:blur(60px);border-radius:50%}
+.ab:nth-child(1){top:5%;left:-50%;background:linear-gradient(90deg,transparent,#EF4444,#8B5CF6,transparent);animation:am1 16s ease-in-out infinite}
+.ab:nth-child(2){bottom:15%;left:-30%;background:linear-gradient(90deg,transparent,#7C3AED,#EF4444,transparent);animation:am2 20s ease-in-out infinite}
+@keyframes am1{0%,100%{transform:translateX(0)}50%{transform:translateX(12%)}}
+@keyframes am2{0%,100%{transform:translateX(0)}50%{transform:translateX(-8%)}}
+.orb{position:fixed;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0}
+.o1{width:600px;height:600px;top:-150px;left:-100px;background:radial-gradient(circle,rgba(239,68,68,.1) 0%,transparent 70%);animation:of1 13s ease-in-out infinite}
+.o2{width:500px;height:500px;bottom:-150px;right:-100px;background:radial-gradient(circle,rgba(139,92,246,.1) 0%,transparent 70%);animation:of2 17s ease-in-out infinite}
+@keyframes of1{0%,100%{transform:translate(0,0)}50%{transform:translate(30px,20px)}}
+@keyframes of2{0%,100%{transform:translate(0,0)}50%{transform:translate(-25px,-35px)}}
+.grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(139,92,246,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,.04) 1px,transparent 1px);background-size:70px 70px}
+.particles{position:fixed;inset:0;z-index:0;pointer-events:none}
+.particle{position:absolute;border-radius:50%;animation:pf linear infinite}
+@keyframes pf{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-100px) scale(1);opacity:0}}
+.page{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1rem}
+.cw{perspective:1400px;width:100%;max-width:580px}
+.ci{transform-style:preserve-3d;transition:transform .1s ease}
+.card{background:rgba(255,255,255,.04);backdrop-filter:blur(50px) saturate(200%);-webkit-backdrop-filter:blur(50px) saturate(200%);border:1px solid rgba(255,255,255,.08);border-radius:28px;padding:3rem 2.5rem;text-align:center;position:relative;overflow:hidden;box-shadow:0 0 0 1px rgba(239,68,68,.1),0 40px 100px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.06);animation:cardIn .8s cubic-bezier(.34,1.56,.64,1) forwards}
+@keyframes cardIn{from{transform:scale(.8) translateY(40px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
+.card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(239,68,68,.05) 0%,transparent 50%,rgba(139,92,246,.04) 100%);pointer-events:none}
+.card::after{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.02),transparent);animation:shimmer 8s ease-in-out infinite;pointer-events:none}
+@keyframes shimmer{0%{left:-100%}100%{left:200%}}
+.icon-wrap{width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,rgba(239,68,68,.18),rgba(239,68,68,.04));border:2px solid rgba(239,68,68,.35);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;animation:iconPop .6s cubic-bezier(.34,1.56,.64,1) .3s both,iconGlow 3s ease-in-out 1s infinite;box-shadow:0 0 40px rgba(239,68,68,.25)}
+@keyframes iconPop{from{transform:scale(0) rotate(-180deg)}to{transform:scale(1) rotate(0deg)}}
+@keyframes iconGlow{0%,100%{box-shadow:0 0 40px rgba(239,68,68,.25)}50%{box-shadow:0 0 70px rgba(239,68,68,.5)}}
+.icon-inner{font-size:2.8rem;animation:iconB .5s ease .9s both}
+@keyframes iconB{from{transform:scale(0)}to{transform:scale(1)}}
+.etitle{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.6rem,4vw,2.3rem);font-weight:800;letter-spacing:-.02em;background:linear-gradient(135deg,#fff 0%,#FCA5A5 50%,var(--r) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.75rem;animation:fu .6s ease .5s both}
+@keyframes fu{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+.ebadge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:20px;padding:.35rem .9rem;font-size:.72rem;color:#FCA5A5;font-weight:600;margin-bottom:1.5rem;animation:fu .6s ease .7s both}
+.emsg{font-size:.93rem;color:rgba(255,255,255,.5);line-height:1.75;max-width:38ch;margin:0 auto 2rem;animation:fu .6s ease .9s both}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 2.2rem;border-radius:16px;font-family:'Space Grotesk',sans-serif;font-size:.95rem;font-weight:700;text-decoration:none;color:#fff;background:linear-gradient(135deg,var(--pd),var(--p),var(--b));border:1px solid rgba(255,255,255,.15);box-shadow:0 8px 28px rgba(139,92,246,.4);transition:all .3s ease;animation:fu .6s ease 1.1s both}
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(139,92,246,.6)}
+.credit{margin-top:2rem;font-size:.78rem;color:rgba(255,255,255,.2);animation:fu .6s ease 1.3s both}
+.cname{font-weight:600;background:linear-gradient(90deg,#8B5CF6,#60A5FA,#A78BFA,#3B82F6,#8B5CF6);background-size:300% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:tf 4s linear infinite}
+@keyframes tf{0%{background-position:0% center}100%{background-position:300% center}}
+@media(max-width:600px){.card{padding:2rem 1.5rem}}
+</style>
 </head>
 <body>
 <div class="bg"></div>
-<div class="bg-orb bg-orb-1"></div>
-<div class="bg-orb bg-orb-2"></div>
-<div class="grid-overlay"></div>
+<div class="aurora"><div class="ab"></div><div class="ab"></div></div>
+<div class="orb o1"></div><div class="orb o2"></div>
+<div class="grid"></div>
 <div class="particles" id="particles"></div>
-
 <main class="page">
-  <div class="card-3d-wrap" id="card3d">
-    <div class="card">
-      <div class="error-icon-wrap"><span class="error-icon">✕</span></div>
-      <h1 class="error-title" id="errTitle">Something went wrong</h1>
-      <div class="error-code-badge" id="errBadge">⚠ Error</div>
-      <p class="error-msg" id="errMsg">An unexpected error occurred. Please try again.</p>
-      <a href="/" class="btn-retry">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
-        Try Again
-      </a>
-      <div class="credit">2Outh System made <span class="credit-name">𓆩𝔇𝔯𝖊𝔞𝖒᷃𝔅𝔬ﾒﾒ̽̽𓆪 ࣪ ࣪ ִֶָ☾.࣪࿐</span></div>
+  <div class="cw" id="cw">
+    <div class="ci" id="ci">
+      <div class="card">
+        <div class="icon-wrap"><span class="icon-inner">✕</span></div>
+        <h1 class="etitle" id="etitle">Something went wrong</h1>
+        <div class="ebadge" id="ebadge">⚠ Error</div>
+        <p class="emsg" id="emsg">An unexpected error occurred. Please try again.</p>
+        <a href="/" class="btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
+          Try Again
+        </a>
+        <div class="credit">2Outh System made <span class="cname">𓆩𝔇𝔯𝖊𝔞𝖒᷃𝔅𝔬ﾒﾒ̽̽𓆪 ࣪ ࣪ ִֶָ☾.࣪࿐</span></div>
+      </div>
     </div>
   </div>
 </main>
-
 <script>
-  const pc = document.getElementById('particles');
-  for (let i = 0; i < 20; i++) {
-    const p = document.createElement('div'); p.className = 'particle';
-    const s = Math.random()*3+1;
-    p.style.cssText = `width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${Math.random()*15+10}s;animation-delay:${Math.random()*10}s;opacity:${Math.random()*0.3+0.1};background:rgba(239,68,68,0.5);`;
-    pc.appendChild(p);
-  }
-
-  const errors = {
-    invalid_state: { title: 'Session Invalid', badge: '⚠ Invalid State', msg: 'Your session was invalid or could not be verified. This can happen if you navigated back or opened the link in a new tab. Please try again.' },
-    state_expired: { title: 'Session Expired', badge: '⏱ Expired', msg: 'Your authorization session expired. Discord authorization must be completed within 10 minutes. Please start over.' },
-    access_denied: { title: 'Access Denied', badge: '🚫 Denied', msg: 'You declined the Discord authorization. To join DreamLand, you need to grant the required permissions.' },
-    token_exchange_failed: { title: 'Auth Failed', badge: '⚡ Token Error', msg: 'We were unable to complete authorization with Discord. This is usually temporary — please try again in a moment.' },
-    user_fetch_failed: { title: 'Profile Error', badge: '👤 Fetch Failed', msg: 'We could not retrieve your Discord profile. Please try again. If the issue persists, check your Discord account status.' },
-    guild_join_failed: { title: 'Join Failed', badge: '🔒 Join Error', msg: 'We were unable to add you to DreamLand. This may be temporary. Please try again or contact a server admin.' },
-  };
-
-  const reason = new URLSearchParams(window.location.search).get('reason');
-  const e = errors[reason] || { title: 'Something went wrong', badge: '⚠ Error', msg: 'An unexpected error occurred. Please try again.' };
-  document.getElementById('errTitle').textContent = e.title;
-  document.getElementById('errBadge').textContent = e.badge;
-  document.getElementById('errMsg').textContent = e.msg;
-
-  const wrap = document.getElementById('card3d');
-  wrap.addEventListener('mousemove', ev => {
-    const r = wrap.getBoundingClientRect();
-    const x = (ev.clientX-r.left)/r.width-0.5, y = (ev.clientY-r.top)/r.height-0.5;
-    wrap.style.transform = `rotateY(${x*5}deg) rotateX(${-y*3}deg)`;
-  });
-  wrap.addEventListener('mouseleave', () => { wrap.style.cssText = 'transform:rotateY(0) rotateX(0);transition:transform 0.6s ease'; });
-  wrap.addEventListener('mouseenter', () => { wrap.style.transition = 'transform 0.1s ease'; });
+const pc=document.getElementById('particles');
+for(let i=0;i<20;i++){const p=document.createElement('div');p.className='particle';const s=Math.random()*3+1;p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${Math.random()*18+8}s;animation-delay:${Math.random()*12}s;opacity:${Math.random()*.3+.1};background:rgba(239,68,68,.5);`;pc.appendChild(p)}
+const errs={invalid_state:{t:'Session Invalid',b:'⚠ Invalid State',m:'Your session was invalid or could not be verified. This can happen if you navigated back or opened the link in a new tab. Please try again.'},state_expired:{t:'Session Expired',b:'⏱ Expired',m:'Your authorization session expired. Discord authorization must be completed within 10 minutes. Please start over.'},access_denied:{t:'Access Denied',b:'🚫 Denied',m:'You declined the Discord authorization. To join DreamLand, you need to grant the required permissions.'},token_exchange_failed:{t:'Auth Failed',b:'⚡ Token Error',m:'We were unable to complete authorization with Discord. This is usually temporary — please try again in a moment.'},user_fetch_failed:{t:'Profile Error',b:'👤 Fetch Failed',m:'We could not retrieve your Discord profile. Please try again. If the issue persists, check your Discord account status.'},guild_join_failed:{t:'Join Failed',b:'🔒 Join Error',m:'We were unable to add you to DreamLand. This may be temporary. Please try again or contact a server admin.'}};
+const r=new URLSearchParams(window.location.search).get('reason');
+const e=errs[r]||{t:'Something went wrong',b:'⚠ Error',m:'An unexpected error occurred. Please try again.'};
+document.getElementById('etitle').textContent=e.t;
+document.getElementById('ebadge').textContent=e.b;
+document.getElementById('emsg').textContent=e.m;
+const cw=document.getElementById('cw'),ci=document.getElementById('ci');
+cw.addEventListener('mousemove',ev=>{const r=cw.getBoundingClientRect();const x=(ev.clientX-r.left)/r.width-.5;const y=(ev.clientY-r.top)/r.height-.5;ci.style.transform=`rotateY(${x*6}deg) rotateX(${-y*4}deg) translateZ(8px)`;});
+cw.addEventListener('mouseleave',()=>{ci.style.transition='transform .7s ease';ci.style.transform='rotateY(0) rotateX(0) translateZ(0)';});
+cw.addEventListener('mouseenter',()=>{ci.style.transition='transform .12s ease';});
 </script>
 </body>
 </html>
