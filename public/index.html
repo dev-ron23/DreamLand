@@ -3,24 +3,492 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Join DreamLand — a Discord community. Click the button below to get started." />
-  <title>DreamLand — Join Our Discord</title>
-  <link rel="stylesheet" href="/styles.css" />
+  <title>DreamLand — Join Our World</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple: #8B5CF6;
+      --purple-light: #A78BFA;
+      --purple-dark: #6D28D9;
+      --blue: #3B82F6;
+      --blue-dark: #1E40AF;
+      --navy: #0A0A1A;
+      --navy2: #0D0D2B;
+      --glass: rgba(255,255,255,0.05);
+      --glass-border: rgba(255,255,255,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--navy);
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── ANIMATED BACKGROUND ── */
+    .bg {
+      position: fixed; inset: 0; z-index: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(139,92,246,0.35) 0%, transparent 60%),
+                  radial-gradient(ellipse 60% 50% at 80% 80%, rgba(59,130,246,0.2) 0%, transparent 55%),
+                  radial-gradient(ellipse 50% 40% at 10% 90%, rgba(109,40,217,0.25) 0%, transparent 55%),
+                  linear-gradient(135deg, #0A0A1A 0%, #0D0D2B 50%, #080818 100%);
+    }
+
+    .bg-orb {
+      position: fixed; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0;
+    }
+    .bg-orb-1 {
+      width: 600px; height: 600px; top: -200px; left: -100px;
+      background: radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 70%);
+      animation: orbFloat1 12s ease-in-out infinite;
+    }
+    .bg-orb-2 {
+      width: 500px; height: 500px; bottom: -150px; right: -100px;
+      background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%);
+      animation: orbFloat2 15s ease-in-out infinite;
+    }
+    .bg-orb-3 {
+      width: 300px; height: 300px; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      background: radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 70%);
+      animation: orbFloat3 10s ease-in-out infinite;
+    }
+
+    @keyframes orbFloat1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(40px,30px)} }
+    @keyframes orbFloat2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-30px,-40px)} }
+    @keyframes orbFloat3 { 0%,100%{transform:translate(-50%,-50%) scale(1)} 50%{transform:translate(-50%,-50%) scale(1.2)} }
+
+    /* ── PARTICLES ── */
+    .particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+    .particle {
+      position: absolute; border-radius: 50%;
+      background: rgba(139,92,246,0.6);
+      animation: particleFloat linear infinite;
+    }
+
+    @keyframes particleFloat {
+      0% { transform: translateY(100vh) scale(0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100px) scale(1); opacity: 0; }
+    }
+
+    /* ── GRID LINES ── */
+    .grid-overlay {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(139,92,246,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(139,92,246,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .page {
+      position: relative; z-index: 1;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    /* ── BANNER ── */
+    .banner-wrap {
+      width: 100%; max-width: 700px;
+      border-radius: 24px 24px 0 0;
+      overflow: hidden;
+      position: relative;
+      height: 180px;
+      margin-bottom: -1px;
+    }
+    .banner-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .banner-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(10,10,26,0.95) 100%);
+    }
+
+    /* ── GLASS CARD ── */
+    .card {
+      width: 100%; max-width: 700px;
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(40px) saturate(180%);
+      -webkit-backdrop-filter: blur(40px) saturate(180%);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-top: none;
+      border-radius: 0 0 32px 32px;
+      padding: 0 3rem 3rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 1px rgba(139,92,246,0.1),
+        0 32px 80px rgba(0,0,0,0.6),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(139,92,246,0.06) 0%, transparent 50%, rgba(59,130,246,0.04) 100%);
+      pointer-events: none;
+    }
+
+    /* Apple Liquid Glass shimmer */
+    .card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 60%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+      animation: shimmer 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes shimmer { 0%{left:-100%} 100%{left:200%} }
+
+    /* ── PROFILE SECTION ── */
+    .profile-section {
+      display: flex; align-items: flex-end; gap: 1.25rem;
+      margin-top: -50px; margin-bottom: 1.5rem;
+      position: relative; z-index: 2;
+    }
+
+    .pfp-wrap {
+      position: relative; flex-shrink: 0;
+    }
+    .pfp {
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      border: 4px solid var(--navy);
+      box-shadow: 0 0 0 2px var(--purple), 0 0 30px rgba(139,92,246,0.5);
+      object-fit: cover;
+      display: block;
+      animation: pfpGlow 3s ease-in-out infinite;
+    }
+    @keyframes pfpGlow {
+      0%,100% { box-shadow: 0 0 0 2px var(--purple), 0 0 30px rgba(139,92,246,0.5); }
+      50% { box-shadow: 0 0 0 2px var(--purple-light), 0 0 50px rgba(139,92,246,0.8); }
+    }
+
+    .online-dot {
+      position: absolute; bottom: 6px; right: 6px;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: #23A55A;
+      border: 3px solid var(--navy);
+      box-shadow: 0 0 10px rgba(35,165,90,0.6);
+    }
+
+    .profile-info { padding-bottom: 0.5rem; }
+
+    /* ── DREAMLAND TITLE ── */
+    .dreamland-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      background: linear-gradient(90deg, #fff 0%, #A78BFA 30%, #8B5CF6 50%, #3B82F6 70%, #fff 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: titleFlow 4s linear infinite;
+    }
+    @keyframes titleFlow { 0%{background-position:0% center} 100%{background-position:200% center} }
+
+    .server-tag {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: rgba(139,92,246,0.15);
+      border: 1px solid rgba(139,92,246,0.3);
+      border-radius: 20px;
+      padding: 0.2rem 0.75rem;
+      font-size: 0.75rem;
+      color: var(--purple-light);
+      margin-top: 0.4rem;
+      font-weight: 500;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(139,92,246,0.4), rgba(59,130,246,0.4), transparent);
+      margin: 1.5rem 0;
+    }
+
+    /* ── DESCRIPTION ── */
+    .desc {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      margin-bottom: 1.75rem;
+    }
+
+    /* ── STATS ROW ── */
+    .stats {
+      display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;
+    }
+    .stat-card {
+      flex: 1; min-width: 100px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 1rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: default;
+      position: relative; overflow: hidden;
+    }
+    .stat-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(139,92,246,0.1), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .stat-card:hover { transform: translateY(-4px); border-color: rgba(139,92,246,0.3); }
+    .stat-card:hover::before { opacity: 1; }
+    .stat-num {
+      font-size: 1.4rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--purple-light), var(--blue));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .stat-label { font-size: 0.7rem; color: rgba(255,255,255,0.4); margin-top: 0.2rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* ── JOIN BUTTON ── */
+    .btn-join {
+      display: flex; align-items: center; justify-content: center; gap: 0.75rem;
+      width: 100%;
+      padding: 1.1rem 2rem;
+      border-radius: 16px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: #fff;
+      background: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple) 50%, var(--blue) 100%);
+      background-size: 200% auto;
+      border: 1px solid rgba(255,255,255,0.15);
+      box-shadow: 0 8px 32px rgba(139,92,246,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+      transition: all 0.3s ease;
+      position: relative; overflow: hidden;
+      animation: btnPulse 3s ease-in-out infinite;
+    }
+    @keyframes btnPulse {
+      0%,100% { box-shadow: 0 8px 32px rgba(139,92,246,0.4), inset 0 1px 0 rgba(255,255,255,0.15); }
+      50% { box-shadow: 0 8px 48px rgba(139,92,246,0.7), inset 0 1px 0 rgba(255,255,255,0.2); }
+    }
+    .btn-join::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .btn-join:hover { background-position: right center; transform: translateY(-2px); }
+    .btn-join:hover::before { opacity: 1; }
+    .btn-join:active { transform: translateY(0); }
+
+    .btn-join svg { flex-shrink: 0; }
+
+    /* ── CREDIT ── */
+    .credit {
+      text-align: center;
+      margin-top: 1.75rem;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+    }
+    .credit-name {
+      font-weight: 600;
+      background: linear-gradient(90deg, #8B5CF6, #3B82F6, #8B5CF6);
+      background-size: 200% auto;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      animation: titleFlow 3s linear infinite;
+    }
+
+    /* ── HOVER CARD (tooltip) ── */
+    .hover-card {
+      position: absolute;
+      bottom: calc(100% + 12px); left: 50%; transform: translateX(-50%) scale(0.9);
+      width: 220px;
+      background: rgba(13,13,43,0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(139,92,246,0.3);
+      border-radius: 16px;
+      padding: 1rem;
+      pointer-events: none;
+      opacity: 0;
+      transition: all 0.25s ease;
+      z-index: 100;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+    }
+    .pfp-wrap:hover .hover-card { opacity: 1; transform: translateX(-50%) scale(1); }
+    .hover-card-pfp { width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--purple); margin-bottom: 0.5rem; }
+    .hover-card-name { font-weight: 700; font-size: 0.9rem; }
+    .hover-card-tag { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+    .hover-card-badge {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      background: rgba(139,92,246,0.2); border: 1px solid rgba(139,92,246,0.4);
+      border-radius: 8px; padding: 0.2rem 0.5rem;
+      font-size: 0.65rem; color: var(--purple-light);
+      margin-top: 0.5rem;
+    }
+
+    /* ── FLOATING BADGES ── */
+    .floating-badge {
+      position: fixed;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 0.6rem 1rem;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.6);
+      pointer-events: none;
+      animation: badgeFloat 6s ease-in-out infinite;
+      z-index: 0;
+    }
+    .floating-badge-1 { top: 15%; left: 5%; animation-delay: 0s; }
+    .floating-badge-2 { top: 25%; right: 5%; animation-delay: 2s; }
+    .floating-badge-3 { bottom: 20%; left: 8%; animation-delay: 4s; }
+    @keyframes badgeFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+
+    /* ── 3D TILT ── */
+    .card-3d-wrap { perspective: 1200px; width: 100%; max-width: 700px; }
+
+    @media (max-width: 600px) {
+      .card { padding: 0 1.5rem 2rem; }
+      .banner-wrap { height: 130px; }
+      .stats { gap: 0.5rem; }
+      .floating-badge { display: none; }
+    }
+  </style>
 </head>
 <body>
-  <main class="page">
-    <section class="hero" aria-labelledby="hero-heading">
-      <div class="hero__content">
-        <h1 id="hero-heading" class="hero__title">Welcome to DreamLand</h1>
-        <p class="hero__subtitle">Join our Discord community in one click. No account setup required — just authorize with Discord and you're in.</p>
-        <a href="/auth/discord" role="button" class="btn btn--primary" aria-label="Join DreamLand Discord server">
-          <svg class="btn__icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
-            <path fill="currentColor" d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.033.055a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
-          </svg>
-          Join DreamLand
-        </a>
+
+<div class="bg"></div>
+<div class="bg-orb bg-orb-1"></div>
+<div class="bg-orb bg-orb-2"></div>
+<div class="bg-orb bg-orb-3"></div>
+<div class="grid-overlay"></div>
+<div class="particles" id="particles"></div>
+
+<!-- Floating ambient badges -->
+<div class="floating-badge floating-badge-1">✦ Discord Community</div>
+<div class="floating-badge floating-badge-2">⚡ Active Server</div>
+<div class="floating-badge floating-badge-3">🌙 DreamLand</div>
+
+<main class="page">
+  <div class="card-3d-wrap" id="card3d">
+
+    <!-- Banner -->
+    <div class="banner-wrap">
+      <img src="https://i.postimg.cc/DzW1cbK9/Dream-Land-banner.png" alt="DreamLand Banner" class="banner-img" />
+      <div class="banner-overlay"></div>
+    </div>
+
+    <!-- Glass Card -->
+    <div class="card" id="mainCard">
+
+      <!-- Profile -->
+      <div class="profile-section">
+        <div class="pfp-wrap">
+          <img src="https://i.postimg.cc/m2w3ZswS/Dream-Land-Pfp.png" alt="DreamLand" class="pfp" />
+          <div class="online-dot"></div>
+          <!-- Hover Card -->
+          <div class="hover-card">
+            <img src="https://i.postimg.cc/m2w3ZswS/Dream-Land-Pfp.png" alt="" class="hover-card-pfp" />
+            <div class="hover-card-name">DreamLand</div>
+            <div class="hover-card-tag">Official Discord Server</div>
+            <div class="hover-card-badge">⚡ Verified Community</div>
+          </div>
+        </div>
+        <div class="profile-info">
+          <h1 class="dreamland-title">DreamLand</h1>
+          <div class="server-tag">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+            Official Discord Server
+          </div>
+        </div>
       </div>
-    </section>
-  </main>
+
+      <div class="divider"></div>
+
+      <p class="desc">
+        Step into a world where dreams become reality. Join thousands of members in our premium Discord community — exclusive events, unique roles, and an unforgettable experience await you.
+      </p>
+
+      <!-- Stats -->
+      <div class="stats">
+        <div class="stat-card">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">Members</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">24/7</div>
+          <div class="stat-label">Active</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Free</div>
+        </div>
+      </div>
+
+      <!-- Join Button -->
+      <a href="/auth/discord" role="button" class="btn-join" aria-label="Join DreamLand Discord server">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.033.055a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
+        </svg>
+        Enter DreamLand
+      </a>
+
+      <!-- Credit -->
+      <div class="credit">
+        2Outh System made <span class="credit-name">𓆩𝔇𝔯𝖊𝔞𝖒᷃𝔅𝔬ﾒﾒ̽̽𓆪 ࣪ ࣪ ִֶָ☾.࣪࿐</span>
+      </div>
+
+    </div><!-- /card -->
+  </div><!-- /card-3d-wrap -->
+</main>
+
+<script>
+  // ── PARTICLES ──
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 25; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = Math.random() * 3 + 1;
+    p.style.cssText = `
+      width:${size}px; height:${size}px;
+      left:${Math.random()*100}%;
+      animation-duration:${Math.random()*15+10}s;
+      animation-delay:${Math.random()*10}s;
+      opacity:${Math.random()*0.5+0.2};
+      background:${Math.random()>0.5?'rgba(139,92,246,0.7)':'rgba(59,130,246,0.7)'};
+    `;
+    container.appendChild(p);
+  }
+
+  // ── 3D TILT ──
+  const wrap = document.getElementById('card3d');
+  const card = document.getElementById('mainCard');
+  wrap.addEventListener('mousemove', e => {
+    const r = wrap.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    const y = (e.clientY - r.top) / r.height - 0.5;
+    wrap.style.transform = `rotateY(${x * 6}deg) rotateX(${-y * 4}deg)`;
+  });
+  wrap.addEventListener('mouseleave', () => {
+    wrap.style.transform = 'rotateY(0deg) rotateX(0deg)';
+    wrap.style.transition = 'transform 0.6s ease';
+  });
+  wrap.addEventListener('mouseenter', () => {
+    wrap.style.transition = 'transform 0.1s ease';
+  });
+</script>
 </body>
 </html>
