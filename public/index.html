@@ -137,13 +137,36 @@ body{font-family:'Inter',sans-serif;background:var(--navy);color:#fff;min-height
 .cname{font-weight:600;background:linear-gradient(90deg,#8B5CF6,#60A5FA,#C4B5FD,#3B82F6,#8B5CF6);background-size:300% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:titleFlow 4s linear infinite}
 
 @media(max-width:600px){
-  .banner{height:150px}
-  .profile-row{padding:0 1.25rem;margin-top:-38px;gap:.75rem}
-  .pfp{width:76px;height:76px}
-  .card-body{padding:0 1.25rem 1.75rem}
-  .stats{gap:.5rem}
+  .banner{height:140px}
+  .profile-row{padding:0 1rem;margin-top:-34px;gap:.6rem}
+  .pfp{width:68px;height:68px;border-width:3px}
+  .online{width:14px;height:14px;bottom:4px;right:4px}
+  .title{font-size:1.4rem}
+  .title-suffix{font-size:.75rem}
+  .stag{font-size:.65rem;padding:.18rem .6rem}
+  .card-body{padding:0 1rem 1.5rem}
+  .divider{margin:0 0 1.1rem}
+  .desc{font-size:.85rem;line-height:1.65;margin-bottom:1.25rem}
+  .stats{gap:.4rem;margin-bottom:1.5rem}
+  .stat{padding:.75rem .5rem;border-radius:12px}
+  .snum{font-size:1.2rem}
+  .slbl{font-size:.6rem}
+  .btn{padding:1rem 1.5rem;font-size:.95rem;border-radius:14px}
+  .credit{font-size:.7rem;margin-top:1.25rem}
   .fbadge{display:none}
-  .title-line{flex-wrap:wrap}
+  .title-line{flex-wrap:wrap;gap:.3rem}
+  .hcard{display:none}
+  .card-wrap{padding:0 .25rem}
+  .page{padding:1rem .75rem}
+}
+@media(max-width:380px){
+  .banner{height:120px}
+  .profile-row{margin-top:-28px}
+  .pfp{width:56px;height:56px}
+  .title{font-size:1.2rem}
+  .card-body{padding:0 .85rem 1.25rem}
+  .stats{flex-direction:row}
+  .stat{min-width:0}
 }
 </style>
 </head>
@@ -224,9 +247,12 @@ for(let i=0;i<30;i++){const p=document.createElement('div');p.className='particl
 const sw=document.getElementById('starsWrap');
 for(let i=0;i<10;i++){const s=document.createElement('div');s.className='star';const w=Math.random()*200+80;s.style.cssText=`width:${w}px;top:${Math.random()*60}%;left:${Math.random()*20}%;animation-duration:${Math.random()*4+3}s;animation-delay:${Math.random()*10}s;opacity:${Math.random()*.6+.3};`;sw.appendChild(s)}
 const wrap=document.getElementById('cardWrap'),inner=document.getElementById('cardInner');
-wrap.addEventListener('mousemove',e=>{const r=wrap.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5;const y=(e.clientY-r.top)/r.height-.5;inner.style.transform=`rotateY(${x*7}deg) rotateX(${-y*5}deg) translateZ(12px)`;});
-wrap.addEventListener('mouseleave',()=>{inner.style.transition='transform .7s ease';inner.style.transform='rotateY(0) rotateX(0) translateZ(0)';});
-wrap.addEventListener('mouseenter',()=>{inner.style.transition='transform .12s ease';});
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+if (!isTouchDevice) {
+  wrap.addEventListener('mousemove',e=>{const r=wrap.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5;const y=(e.clientY-r.top)/r.height-.5;inner.style.transform=`rotateY(${x*7}deg) rotateX(${-y*5}deg) translateZ(12px)`;});
+  wrap.addEventListener('mouseleave',()=>{inner.style.transition='transform .7s ease';inner.style.transform='rotateY(0) rotateX(0) translateZ(0)';});
+  wrap.addEventListener('mouseenter',()=>{inner.style.transition='transform .12s ease';});
+}
 </script>
 </body>
 </html>

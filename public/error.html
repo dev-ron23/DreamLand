@@ -50,7 +50,24 @@ body{font-family:'Inter',sans-serif;background:var(--navy);color:#fff;min-height
 .credit{margin-top:2rem;font-size:.78rem;color:rgba(255,255,255,.2);animation:fu .6s ease 1.3s both}
 .cname{font-weight:600;background:linear-gradient(90deg,#8B5CF6,#60A5FA,#A78BFA,#3B82F6,#8B5CF6);background-size:300% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:tf 4s linear infinite}
 @keyframes tf{0%{background-position:0% center}100%{background-position:300% center}}
-@media(max-width:600px){.card{padding:2rem 1.5rem}}
+@media(max-width:600px){
+  .card{padding:2rem 1.25rem 1.75rem;border-radius:20px}
+  .icon-wrap{width:76px;height:76px;margin-bottom:1.1rem}
+  .icon-inner{font-size:2.2rem}
+  .etitle{font-size:1.5rem}
+  .ebadge{font-size:.65rem;padding:.28rem .7rem;margin-bottom:1.1rem}
+  .emsg{font-size:.85rem;margin-bottom:1.5rem;max-width:100%}
+  .btn{padding:.85rem 1.5rem;font-size:.9rem;width:100%;justify-content:center}
+  .credit{font-size:.7rem;margin-top:1.25rem}
+  .page{padding:1rem .75rem}
+  .cw{padding:0 .25rem}
+}
+@media(max-width:380px){
+  .card{padding:1.5rem 1rem 1.5rem}
+  .etitle{font-size:1.3rem}
+  .icon-wrap{width:64px;height:64px}
+  .icon-inner{font-size:1.8rem}
+}
 </style>
 </head>
 <body>
